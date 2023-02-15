@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     }
 
 body {
@@ -19,6 +20,7 @@ h1{
     
 }
 
+
 .menu {
     font-size: 20px;
     text-decoration: solid;
@@ -29,13 +31,21 @@ h1{
     
 }
 
+.menu ul {
+    cursor: pointer;
+    
+}
+
+
 img {
     width: 400px;
     border-radius: 50%;
     margin-top: 10px;
     display: block;
     margin: 0px auto;
+    background-color: chocolate;
 }
+
 
 .description {
     font-size: 22px;
@@ -49,7 +59,8 @@ img {
     font-size: 20px;
     color:black;
     margin-top: 10px;
-    text-align: center;
+    text-align: left;
+    
 
 }
 .social li {
@@ -59,8 +70,8 @@ img {
 .habilidades {
     font-size: 20px;
     color:black;
-    margin-top: 20px;
-    text-align: center;
+    margin-top: auto;
+    text-align: left;
     
 }
 
@@ -68,3 +79,8 @@ img {
     margin-top: 200px;
     text-align: center;
 }
+
+
+
+
+
