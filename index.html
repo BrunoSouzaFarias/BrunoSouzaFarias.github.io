@@ -3,20 +3,61 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Portfolio profissional de Bruno de Souza Farias - Desenvolvedor Full Stack Web com experiência em HTML5, CSS3, JavaScript, React e Node.js. Desenvolvedor curioso sempre buscando novas tecnologias e melhores práticas.">
+        <meta name="keywords" content="desenvolvedor web, full stack, frontend, backend, HTML5, CSS3, JavaScript, React, Node.js, portfolio, Bruno Souza, Trybe, UNIP">
+        <meta name="author" content="Bruno de Souza Farias">
+        
+        <!-- Open Graph Tags -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://brunosouzafarias.github.io">
+        <meta property="og:title" content="Bruno de Souza Farias - Desenvolvedor Full Stack Web">
+        <meta property="og:description" content="Portfolio profissional de Bruno de Souza Farias - Desenvolvedor Full Stack Web com experiência em HTML5, CSS3, JavaScript, React e Node.js.">
+        <meta property="og:image" content="assets/img/about.jpg">
+        <meta property="og:site_name" content="Bruno Souza - Portfolio">
+        <meta property="og:locale" content="pt_BR">
+        
+        <!-- Twitter Card Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="https://brunosouzafarias.github.io">
+        <meta name="twitter:title" content="Bruno de Souza Farias - Desenvolvedor Full Stack Web">
+        <meta name="twitter:description" content="Portfolio profissional com projetos, skills e informações de contato">
+        <meta name="twitter:image" content="assets/img/about.jpg">
+        
+        <!-- Structured Data (JSON-LD) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Bruno de Souza Farias",
+            "jobTitle": "Desenvolvedor Web Full Stack",
+            "url": "https://brunosouzafarias.github.io",
+            "image": "assets/img/about.jpg",
+            "sameAs": [
+                "https://www.linkedin.com/in/bruno-souza-farias/",
+                "https://github.com/BrunoSouzaFarias",
+                "https://www.instagram.com/brusf13/",
+                "https://twitter.com/dgkkcs"
+            ],
+            "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "GitHub", "Angular"],
+            "email": "bruno@email.com"
+        }
+        </script>
 
         <link rel="stylesheet" href="assets/css/styles.css">
 
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>Portfolio Bruno de Souza Farias</title>
+        <title>Portfolio Bruno de Souza Farias - Desenvolvedor Full Stack Web</title>
     </head>
     <body>
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">Bruno de Souza</a>
+                    <a href="#home" class="nav__logo">Bruno de Souza</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
@@ -25,12 +66,18 @@
                         <li class="nav__item"><a href="#about" class="nav__link">Sobre</a></li>
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#work" class="nav__link">Projetos</a></li>
+                        <li class="nav__item"><a href="#certifications" class="nav__link">Certificações</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contato</a></li>
                     </ul>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="nav__toggle-container">
+                    <button class="nav__theme-toggle" id="themeToggle" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+                        <i class='bx bx-sun'></i>
+                    </button>
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class='bx bx-menu'></i>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -45,9 +92,9 @@
                 </div>
 
                 <div class="home__social">
-                    <a href="https://www.linkedin.com/in/bruno-souza-farias/" target="_blank" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="" class="home__social-icon"><i class='bx bxl-behance' ></i></a>
-                    <a href="https://github.com/BrunoSouzaFarias" target="_blank" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                    <a href="https://www.linkedin.com/in/bruno-souza-farias/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" title="Behance" class="home__social-icon"><i class='bx bxl-behance' ></i></a>
+                    <a href="https://github.com/BrunoSouzaFarias" target="_blank" rel="noopener noreferrer" title="GitHub" class="home__social-icon"><i class='bx bxl-github' ></i></a>
                 </div>
 
                 <div class="home__img">
@@ -69,12 +116,12 @@
 
                 <div class="about__container bd-grid">
                     <div class="about__img">
-                        <img src="assets/img/about.jpg" alt="">
+                        <img src="assets/img/about.jpg" alt="Foto de Perfil de Bruno de Souza Farias" loading="lazy">
                     </div>
                     
                     <div>
-                        <h2 class="about__subtitle">Olá Sou o Bruno &#128075;</h2>
-                        <p class="about__text"> Seja bem vindo ao meu site, tenho 35 anos faço falculdade de Analise e Desenvolvimento de Sistemas na Unip, Atualmente estou estudando na escola <b>Trybe</b>, sou muito curioso e estou sempre estudando tecnoligias novas, caso goste do meu perfil entre em contato para que possamos conversar.</p>           
+                        <h2 class="about__subtitle">Olá, sou o Bruno &#128075;</h2>
+                        <p class="about__text">Bem-vindo ao meu portfólio! Sou um desenvolvedor web full stack apaixonado por tecnologia e inovação. Com 35 anos de idade, estou em uma emocionante transição de carreira para a área de tecnologia. Atualmente, estuo Análise e Desenvolvimento de Sistemas na UNIP e sou estudante da <b>Trybe</b>, uma das melhores escolas de tecnologia do Brasil. Possuo sólida experiência em recursos humanos, gestão administrativa e supervisão de vendas. Agora dirijo meu talento para criar soluções digitais incríveis. Sou curioso, dedicado e sempre buscando aprender novas tecnologias!</p>           
                     </div>                                   
                 </div>
             </section>
@@ -85,11 +132,9 @@
 
                 <div class="skills__container bd-grid">          
                     <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">Já Trabalhei na Força Aerea Brasileira na area de recursos Humanos e Licitações durante 6 anos, Atuei em uma das maiores Rede de varejista de artigos espotivos do brasil (Centauro) como supervisor de Vendas durante 4 anos e Supervisor Administrativo Regional durante 5 anos e agora estou em transição de carreira para area de tecnologia uma area que sempre tive facilidade.</p><br>
-                        <p>Atualmente alem de Fazer Faculdade de Analise Desenvolvimento de Sistemas estou estudando na escola <b>Trybe</b> é uma escola de Tecnologia mais orientada para o desenvolvimento de uma carreira de sucesso. Com o Modelo de Sucesso Compartilhado, quem estuda na Trybe tem a opção de pagar apenas quando já estiver trabalhando.
-
-                            São mais de 1500 horas de formação que aborda fundamentos de desenvolvimento web, desenvolvimento, Front-end, Back-end, ciência da computação, metodologias ágeis e habilidades comportamentais.</p>
+                        <h2 class="skills__subtitle">Skills Profissionais</h2>
+                        <p class="skills__text">Possuo 6 anos de experiência na Força Aérea Brasileira trabalhando em Recursos Humanos e Licitações. Atuei por 4 anos como Supervisor de Vendas em uma das maiores redes varejistas de artigos esportivos do Brasil (Centauro), e por 5 anos como Supervisor Administrativo Regional. Agora estou em transição profissional para a área de tecnologia, uma área onde sempre tive facilidade e paixão.</p><br>
+                        <p>Além da faculdade de Análise e Desenvolvimento de Sistemas, estou estudando na <b>Trybe</b>, uma escola de tecnologia focada no desenvolvimento de carreiras bem-sucedidas. Com o Modelo de Sucesso Compartilhado, os alunos pagam apenas quando começam a trabalhar. A formação compreende mais de 1500 horas cobrindo fundamentos de desenvolvimento web, front-end, back-end, ciência da computação, metodologias ágeis e soft skills.</p>
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-html5 bx-tada skills__icon'></i>
@@ -156,7 +201,7 @@
                     </div>
                     
                     <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
+                        <img src="assets/img/work3.jpg" alt="Desenvolvimento de Código" loading="lazy" class="skills__img">
                     </div>
                 </div>
             </section>
@@ -166,24 +211,99 @@
                 <h2 class="section-title">Projetos</h2>
 
                 <div class="work__container bd-grid">
-                    <a href="https://github.com/BrunoSouzaFarias/project-fallen" target="_blank" class="work__img">
-                        <img src="assets/img/work1.png" alt="project-fallen">
-                    </a>
-                    <a href="https://github.com/BrunoSouzaFarias/social-tree" class="work__img">
-                        <img src="https://github.com/BrunoSouzaFarias/social-tree/blob/master/assets/Captura.png?raw=true" alt="social-tree">
-                    </a>
-                    <a href="https://github.com/BrunoSouzaFarias/lab-banco-digital-oo" class="work__img">
-                        <img src="assets/img/work3.jpg" alt="banco-digital-oo">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </a>
+                    <div class="work__card">
+                        <a href="https://github.com/BrunoSouzaFarias/project-fallen" target="_blank" rel="noopener noreferrer" class="work__img">
+                            <img src="assets/img/work1.png" alt="Projeto Fallen - Jogo com JavaScript" loading="lazy">
+                        </a>
+                        <div class="work__info">
+                            <h3 class="work__title">Project Fallen</h3>
+                            <p class="work__description">Jogo interativo desenvolvido em JavaScript puro. Implementação de lógica de gameplay, controle de personagens e sistema de pontuação.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-badge">JavaScript</span>
+                                <span class="work__tech-badge">HTML5</span>
+                                <span class="work__tech-badge">CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work__card">
+                        <a href="https://github.com/BrunoSouzaFarias/social-tree" target="_blank" rel="noopener noreferrer" class="work__img">
+                            <img src="https://github.com/BrunoSouzaFarias/social-tree/blob/master/assets/Captura.png?raw=true" alt="Social Tree - Agregador de Redes Sociais" loading="lazy">
+                        </a>
+                        <div class="work__info">
+                            <h3 class="work__title">Social Tree</h3>
+                            <p class="work__description">Aplicação web para centralizar e compartilhar links de redes sociais. Design responsivo e interface amigável.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-badge">HTML5</span>
+                                <span class="work__tech-badge">CSS3</span>
+                                <span class="work__tech-badge">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work__card">
+                        <a href="https://github.com/BrunoSouzaFarias/lab-banco-digital-oo" target="_blank" rel="noopener noreferrer" class="work__img">
+                            <img src="assets/img/work3.jpg" alt="Banco Digital - Projeto OOP" loading="lazy">
+                        </a>
+                        <div class="work__info">
+                            <h3 class="work__title">Banco Digital OOP</h3>
+                            <p class="work__description">Aplicação de banco digital utilizando programação orientada a objetos. Sistema de contas, transações e operações bancárias.</p>
+                            <div class="work__tech">
+                                <span class="work__tech-badge">JavaScript</span>
+                                <span class="work__tech-badge">OOP</span>
+                                <span class="work__tech-badge">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== CERTIFICATIONS =====-->
+            <section class="certifications section" id="certifications">
+                <h2 class="section-title">Certificações e Cursos</h2>
+
+                <div class="certifications__container bd-grid">
+                    <div class="certification__card">
+                        <div class="certification__header">
+                            <i class='bx bxl-trello'></i>
+                            <h3 class="certification__title">Trybe - Escola de Tecnologia</h3>
+                        </div>
+                        <p class="certification__date">2023 - 2025</p>
+                        <p class="certification__description">Formação completa em desenvolvimento web com mais de 1500 horas. Fundamentos de desenvolvimento, front-end, back-end, ciência da computação e metodologias ágeis.</p>
+                        <div class="certification__tech">
+                            <span class="certification__badge">Full Stack</span>
+                            <span class="certification__badge">JavaScript</span>
+                            <span class="certification__badge">React</span>
+                        </div>
+                    </div>
+
+                    <div class="certification__card">
+                        <div class="certification__header">
+                            <i class='bx bxs-graduation'></i>
+                            <h3 class="certification__title">UNIP - Análise e Desenvolvimento de Sistemas</h3>
+                        </div>
+                        <p class="certification__date">Em Andamento</p>
+                        <p class="certification__description">Curso superior em Análise e Desenvolvimento de Sistemas. Formação em programação, banco de dados, desenvolvimento de software e gestão de projetos.</p>
+                        <div class="certification__tech">
+                            <span class="certification__badge">Educação Superior</span>
+                            <span class="certification__badge">Programação</span>
+                            <span class="certification__badge">Análise</span>
+                        </div>
+                    </div>
+
+                    <div class="certification__card">
+                        <div class="certification__header">
+                            <i class='bx bxl-javascript'></i>
+                            <h3 class="certification__title">JavaScript Avançado</h3>
+                        </div>
+                        <p class="certification__date">2024</p>
+                        <p class="certification__description">Curso avançado em JavaScript, cobrindo tópicos como programação orientada a objetos, manipulação do DOM, APIs e JavaScript asíncrono.</p>
+                        <div class="certification__tech">
+                            <span class="certification__badge">JavaScript</span>
+                            <span class="certification__badge">OOP</span>
+                            <span class="certification__badge">Async</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -192,11 +312,11 @@
                 <h2 class="section-title">Contato</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Enviar" class="contact__button button">
+                    <form action="" class="contact__form" id="contactForm">
+                        <input type="text" placeholder="Seu Nome" class="contact__input" id="contactName" required aria-label="Nome">
+                        <input type="email" placeholder="Seu Email" class="contact__input" id="contactEmail" required aria-label="Email">
+                        <textarea placeholder="Sua Mensagem" id="contactMessage" cols="0" rows="10" class="contact__input" required aria-label="Mensagem"></textarea>
+                        <input type="submit" value="Enviar" class="contact__button button">
                     </form>
                 </div>
             </section>
@@ -206,11 +326,11 @@
         <footer class="footer">
             <p class="footer__title">Bruno de Souza Farias</p>
             <div class="footer__social">
-                <a href="https://web.facebook.com/brunodesouza.farias" target="_blank" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="https://www.instagram.com/brusf13/" target="_blank"  class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="https://twitter.com/dgkkcs" target="_blank"  class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://web.facebook.com/brunodesouza.farias" target="_blank" rel="noopener noreferrer" title="Facebook" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="https://www.instagram.com/brusf13/" target="_blank" rel="noopener noreferrer" title="Instagram" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="https://twitter.com/dgkkcs" target="_blank" rel="noopener noreferrer" title="Twitter" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
             </div>
-            <p class="footer__copy">&#169;  All rigths reserved</p>
+            <p class="footer__copy">&#169; 2025 Todos os direitos reservados</p>
         </footer>
 
 
