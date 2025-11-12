@@ -89,7 +89,10 @@
                 <div class="home__data">
                     <h1 class="home__title">Olá,<br>Eu Sou o <span class="home__title-color">Bruno</span><br>Web Full Stack</h1>
 
-                    <a href="#contact" class="button">Contato</a>
+                    <div class="home__buttons">
+                        <a href="#contact" class="button">Contato</a>
+                        <a href="assets/cv/bruno-souza-cv.html" target="_blank" rel="noopener noreferrer" class="button button--secondary"><i class='bx bxs-download'></i> Baixar CV</a>
+                    </div>
                 </div>
 
                 <div class="home__social">
@@ -211,8 +214,15 @@
             <section class="work section" id="work">
                 <h2 class="section-title">Projetos</h2>
 
+                <div class="work__filters">
+                    <button class="work__filter-btn work__filter-btn--active" data-filter="all">Todos</button>
+                    <button class="work__filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="work__filter-btn" data-filter="backend">Backend</button>
+                    <button class="work__filter-btn" data-filter="fullstack">Full Stack</button>
+                </div>
+
                 <div class="work__container bd-grid">
-                    <div class="work__card">
+                    <div class="work__card" data-category="frontend">
                         <a href="https://github.com/BrunoSouzaFarias/project-fallen" target="_blank" rel="noopener noreferrer" class="work__img">
                             <img src="assets/img/work1.png" alt="Projeto Fallen - Jogo com JavaScript" loading="lazy">
                         </a>
@@ -227,7 +237,7 @@
                         </div>
                     </div>
 
-                    <div class="work__card">
+                    <div class="work__card" data-category="frontend">
                         <a href="https://github.com/BrunoSouzaFarias/social-tree" target="_blank" rel="noopener noreferrer" class="work__img">
                             <img src="https://github.com/BrunoSouzaFarias/social-tree/blob/master/assets/Captura.png?raw=true" alt="Social Tree - Agregador de Redes Sociais" loading="lazy">
                         </a>
@@ -242,7 +252,7 @@
                         </div>
                     </div>
 
-                    <div class="work__card">
+                    <div class="work__card" data-category="backend">
                         <a href="https://github.com/BrunoSouzaFarias/lab-banco-digital-oo" target="_blank" rel="noopener noreferrer" class="work__img">
                             <img src="assets/img/work3.jpg" alt="Banco Digital - Projeto OOP" loading="lazy">
                         </a>

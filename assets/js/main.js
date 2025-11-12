@@ -134,3 +134,30 @@ sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
 sr.reveal('.skills__data, .work__card, .certification__card, .contact__input',{interval: 200}); 
+
+/*===== PROJECT FILTER =====*/
+const filterButtons = document.querySelectorAll('.work__filter-btn');
+const projectCards = document.querySelectorAll('.work__card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('work__filter-btn--active'));
+        // Add active class to clicked button
+        button.classList.add('work__filter-btn--active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        // Filter projects
+        projectCards.forEach(card => {
+            card.classList.remove('work__card--hidden');
+            
+            if(filter !== 'all') {
+                const category = card.getAttribute('data-category');
+                if(category !== filter) {
+                    card.classList.add('work__card--hidden');
+                }
+            }
+        });
+    });
+}); 
