@@ -75,7 +75,3 @@ git push origin main
 
 - LinkedIn: https://www.linkedin.com/in/bruno-souza-farias/
 - GitHub: https://github.com/BrunoSouzaFarias
-
----
-
-Obrigado! Se quiser, eu posso também criar um `LICENSE` (MIT) e adicionar screenshots no `README.md`. Quer que eu crie o `LICENSE` agora?
