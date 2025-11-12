@@ -378,8 +378,63 @@ img {
   align-items: center;
 }
 
-/* ===== ABOUT =====*/
-.about__container {
+/* Home summary */
+.home__summary {
+  margin-top: 1rem;
+  color: var(--text-light);
+  max-width: 48rem;
+  line-height: 1.6;
+}
+
+/* Soft Skills */
+.soft-skills__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.soft-skill {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 1.2rem;
+  border-radius: .5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.soft-skill i {
+  font-size: 1.8rem;
+  color: var(--first-color);
+  margin-bottom: .5rem;
+}
+
+.soft-skill h3 {
+  margin: .5rem 0;
+  font-size: 1rem;
+}
+
+/* Experience bullets */
+.experience__bullets {
+  margin: 0.8rem 0 1rem 1.25rem;
+  color: var(--text-light);
+}
+
+/* Education */
+.education__container {
+  row-gap: 1.5rem;
+}
+
+.education__item {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: var(--shadow);
+}
+
+ /* ===== ABOUT =====*/
+ .about__container {
   row-gap: 2rem;
   text-align: center;
 }
