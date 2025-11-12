@@ -78,6 +78,9 @@ window.addEventListener('scroll', scrollActive)
 /*===== FORM VALIDATION AND SUBMISSION =====*/
 const contactForm = document.getElementById('contactForm');
 if(contactForm) {
+    // Initialize EmailJS (Substitua pelos seus valores)
+    // emailjs.init('YOUR_PUBLIC_KEY');
+    
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -98,20 +101,24 @@ if(contactForm) {
             return;
         }
         
-        // Show success message
-        alert('Mensagem enviada com sucesso! Obrigado pelo contato.');
-        contactForm.reset();
-        
-        // Here you would integrate with EmailJS or another service
-        // Example with EmailJS:
-        // emailjs.send('service_id', 'template_id', {
-        //     from_name: name,
-        //     from_email: email,
-        //     message: message
-        // }).then(() => {
-        //     alert('Email enviado com sucesso!');
-        //     contactForm.reset();
-        // });
+        // Enviar via EmailJS (descomente após configurar)
+        try {
+            // Descomente a linha abaixo após obter suas credenciais do EmailJS
+            // const response = await emailjs.send('service_XXXXX', 'template_XXXXX', {
+            //     from_name: name,
+            //     from_email: email,
+            //     message: message,
+            //     to_email: 'seu-email@exemplo.com'
+            // });
+            
+            // Se usando EmailJS, a resposta acima confirmará o envio
+            // Se comentado, apenas mostra mensagem local
+            alert('Mensagem enviada com sucesso! Obrigado pelo contato.');
+            contactForm.reset();
+        } catch(error) {
+            console.error('Erro ao enviar:', error);
+            alert('Erro ao enviar mensagem. Tente novamente.');
+        }
     });
 }
 

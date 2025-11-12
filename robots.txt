@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /.git/
+Disallow: /.vscode/
+
+Sitemap: https://brunosouzafarias.github.io/sitemap.xml
+
+# Delay para crawlers (opcional)
+Crawl-delay: 1
+Request-rate: 1/10s
