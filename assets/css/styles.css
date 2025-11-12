@@ -384,6 +384,42 @@ img {
   color: var(--text-light);
   max-width: 48rem;
   line-height: 1.6;
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(0, 102, 255, 0.03) 100%);
+  border-left: 4px solid var(--first-color);
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  border-radius: .5rem;
+}
+
+.home__summary h2 {
+  color: var(--text-color);
+  font-size: 1.35rem;
+  margin: 0 0 .5rem 0;
+}
+
+.home__summary p {
+  margin: 0 0 1rem 0;
+}
+
+.home__highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.highlight-item {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--first-color);
+  padding: .9rem 1rem;
+  border-radius: .5rem;
+  box-shadow: var(--shadow);
+  color: var(--text-color);
+}
+
+.highlight-item strong {
+  color: var(--first-color);
+  display: block;
+  margin-bottom: .35rem;
 }
 
 /* Soft Skills */
