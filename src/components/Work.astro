@@ -1,0 +1,172 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section class="work container" id="work">
+  <p class="label-mono">// projetos</p>
+  <h2 class="section-title">Work</h2>
+  <p class="work__intro">Clique em um projeto para ver o case study completo.</p>
+
+  <div class="work__grid">
+    {projects.map((project) => (
+      <article class="work__card glass" data-project={project.slug} tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="work__thumb">
+          <img src={project.thumbnail} alt={`Captura de tela do projeto ${project.title}`} loading="lazy" />
+        </div>
+        <div class="work__info">
+          <h3>{project.title}</h3>
+          <p>{project.shortDescription}</p>
+          <div class="work__tech">
+            {project.tech.map((t) => <span class="work__badge">{t}</span>)}
+          </div>
+          <span class="work__cta label-mono">ver case study →</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<div class="modal-backdrop" id="case-study-backdrop" hidden></div>
+<div class="modal-overlay" id="case-study-overlay" role="dialog" aria-modal="true" hidden>
+  <div class="modal-panel glass">
+    <button class="modal-close" data-close aria-label="Fechar case study">✕</button>
+    {projects.map((project) => (
+      <div class="case-study" id={`case-study-${project.slug}`} hidden>
+        <p class="label-mono">{project.tech.join(' · ')}</p>
+        <h3>{project.title}</h3>
+        <img src={project.thumbnail} alt={`Captura de tela do projeto ${project.title}`} class="case-study__img" />
+
+        <div class="case-study__block">
+          <p class="label-mono">Problema</p>
+          <p>{project.problem}</p>
+        </div>
+        <div class="case-study__block">
+          <p class="label-mono">Solução</p>
+          <p>{project.solution}</p>
+        </div>
+        <div class="case-study__block">
+          <p class="label-mono">Resultado</p>
+          <p>{project.result}</p>
+        </div>
+
+        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="btn">Ver repositório →</a>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .work {
+    padding: 8rem 24px;
+  }
+  .work__intro {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+  }
+  .work__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .work__card {
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .work__card:hover,
+  .work__card:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--border);
+    outline: none;
+  }
+  .work__thumb {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .work__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease;
+  }
+  .work__card:hover .work__thumb img {
+    transform: scale(1.05);
+  }
+  .work__info {
+    padding: 1.5rem;
+  }
+  .work__info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .work__info p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+  .work__tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+  .work__badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: var(--accent);
+  }
+  .work__cta {
+    color: var(--accent);
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 90;
+  }
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 91;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .modal-panel {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    background: var(--bg-elevated);
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .case-study__img {
+    width: 100%;
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+    border: 1px solid var(--glass-border);
+  }
+  .case-study__block {
+    margin-bottom: 1.5rem;
+  }
+  .case-study__block p:last-child {
+    margin-top: 0.4rem;
+  }
+</style>

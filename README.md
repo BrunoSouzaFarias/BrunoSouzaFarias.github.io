@@ -1,75 +1,49 @@
 # Portfolio — Bruno de Souza Farias
 
-Este repositório contém o portfolio pessoal de Bruno de Souza Farias. O site foi atualizado com melhorias de SEO, design, acessibilidade, dark mode, seção de projetos e certificações, e formulários com validação.
+Portfolio pessoal de Bruno de Souza Farias, redesenhado com identidade visual própria ("Neon Circuit"): tema escuro com acentos neon verde/ciano, rede de partículas interativa no hero, e tema claro alternativo. Construído com [Astro](https://astro.build).
 
 ## Visão geral
 
 - Projeto: Portfolio pessoal
 - Autor: Bruno de Souza Farias
-- Tecnologias: HTML5, CSS3 (variáveis e animações), JavaScript (ES6+), Box Icons, ScrollReveal
-- Objetivo: apresentar projetos, skills, certificações e contato
+- Stack: Astro + TypeScript, CSS puro (sem framework de UI)
+- Estrutura: Home (hero com rede de partículas) → Work (projetos com case study em modal) → Contato. Bio/skills/experiência/educação/certificações ficam num drawer lateral ("Sobre mim").
 
-## Como ver o site localmente
+## Rodando localmente
 
-O site é estático. Para abrir localmente basta abrir o arquivo `index.html` no seu navegador:
-
-1. Abra o explorador de arquivos e navegue até a pasta do projeto.
-2. Clique duas vezes em `index.html` ou abra no navegador.
-
-Se preferir servir localmente (útil para testar caminhos relativos), use um servidor HTTP simples. Exemplo com Python (se instalado):
-
-```powershell
-# No PowerShell, estando na pasta do projeto
-python -m http.server 8000
-# Abra http://localhost:8000 no navegador
+```bash
+npm install
+npm run dev      # http://localhost:4321
 ```
 
-## Como publicar no GitHub Pages
+## Build de produção
 
-Opção A — Repositório com nome `SEUUSUARIO.github.io` (recomendado para site principal):
-1. No GitHub, crie um repositório com o nome `SEUUSUARIO.github.io` e publique.
-2. Faça push do conteúdo para o branch `main`.
-3. O site fica disponível em: `https://SEUUSUARIO.github.io`
-
-Opção B — Repositório qualquer e Pages configurado:
-1. No GitHub, vá em Settings → Pages → Source.
-2. Selecione branch `main` e `/(root)`.
-3. Salve e aguarde alguns minutos; a URL será mostrada.
-
-> Observação: também é possível usar a CLI `gh` para deploy automatizado (`gh pages`) se preferir.
-
-## Como contribuir / enviar atualizações
-
-1. Faça alterações localmente.
-2. Adicione, commit e push:
-
-```powershell
-git add .
-git commit -m "Atualização: descrição do que foi alterado"
-git push origin main
+```bash
+npm run build     # gera ./dist
+npm run preview    # serve o build localmente para conferir antes do deploy
 ```
 
-3. Se quiser usar pull requests (colaboradores), crie uma branch, faça PR e faça merge no `main`.
+## Deploy (GitHub Pages)
 
-## Credenciais Git (autenticação)
+O deploy é automático via GitHub Actions (`.github/workflows/deploy.yml`): a cada push em `main`, o workflow builda o projeto e publica `dist/` no GitHub Pages.
 
-- Para `git push` use o método de autenticação que preferir: Git Credential Manager (recomendado), token pessoal (PAT) ou `gh auth login`.
-- Se houver prompts de usuário/senha, use seu nome de usuário do GitHub e o PAT (token) como senha.
+**Configuração necessária no repositório (uma vez só):** em Settings → Pages → Build and deployment → Source, selecione **GitHub Actions** (em vez de "Deploy from a branch", que era usado pela versão estática anterior).
 
-## Arquivos importantes
+## Estrutura do projeto
 
-- `index.html` — página principal
-- `assets/css/styles.css` — estilos e temas
-- `assets/js/main.js` — scripts (dark mode, validação, animações)
-- `.gitignore` — arquivos ignorados
-- `MELHORIAS.md`, `COMO_USAR.md`, `TESTES.md`, `PROXIMAS_MELHORIAS.md` — documentação interna
+- `src/pages/index.astro` — monta a página a partir dos componentes
+- `src/components/` — Header, Hero, Work (+ modal de case study), AboutDrawer, Contact, Footer
+- `src/data/` — conteúdo (projetos, bio, skills, experiência, educação, certificações) separado da apresentação
+- `src/scripts/` — tema (dark/light), rede de partículas (canvas), interações (drawer, modal, form, nav)
+- `src/styles/global.css` — design tokens (cores, tipografia) e estilos globais
+- `public/assets/` — imagens e CV reaproveitados do site anterior
+- `docs/superpowers/specs/` — spec de design da sessão de brainstorming que originou esse redesign
 
-## Próximos passos recomendados
+## Próximos passos sugeridos
 
-- Habilitar GitHub Pages (se ainda não habilitado)
-- Adicionar `LICENSE` (ex: MIT) se quiser permitir reuso
-- Atualizar `README.md` com mais detalhes e screenshots
-- Integrar EmailJS para o formulário de contato (se desejar enviar emails reais)
+- Integração real com EmailJS no formulário de contato (hoje só valida e simula envio)
+- Adicionar mais projetos ao `src/data/projects.ts` conforme forem ficando prontos
+- Configurar domínio customizado (se desejar) em Settings → Pages
 
 ## Contato
 

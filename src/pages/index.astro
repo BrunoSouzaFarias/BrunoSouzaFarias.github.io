@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Work from '../components/Work.astro';
+import AboutDrawer from '../components/AboutDrawer.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+    <Work />
+    <Contact />
+  </main>
+  <AboutDrawer />
+  <Footer />
+
+  <script>
+    import { initTheme } from '../scripts/theme';
+    import { initParticleNetwork } from '../scripts/particle-network';
+    import {
+      initMobileNav,
+      initAboutDrawer,
+      initCaseStudyModal,
+      initContactForm,
+      initScrollActiveNav,
+    } from '../scripts/interactions';
+
+    initTheme();
+    initParticleNetwork('particle-canvas');
+    initMobileNav();
+    initAboutDrawer();
+    initCaseStudyModal();
+    initContactForm();
+    initScrollActiveNav();
+  </script>
+</Layout>

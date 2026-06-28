@@ -1,0 +1,43 @@
+---
+import { contactInfo } from '../data/profile';
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="label-mono">BRUNO_SOUZA.dev</p>
+    <div class="footer__social">
+      <a href={contactInfo.facebook} target="_blank" rel="noopener noreferrer" title="Facebook">fb</a>
+      <a href={contactInfo.instagram} target="_blank" rel="noopener noreferrer" title="Instagram">ig</a>
+      <a href={contactInfo.twitter} target="_blank" rel="noopener noreferrer" title="Twitter">tw</a>
+    </div>
+    <p class="footer__copy">© {new Date().getFullYear()} Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 2.5rem 0;
+  }
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .footer__social {
+    display: flex;
+    gap: 1rem;
+  }
+  .footer__social a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+  .footer__copy {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 0;
+  }
+</style>

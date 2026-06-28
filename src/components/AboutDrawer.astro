@@ -1,0 +1,258 @@
+---
+import { bio, technicalSkills, softSkills, experience, education, certifications } from '../data/profile';
+---
+
+<div class="drawer-backdrop" id="about-backdrop" hidden></div>
+<aside class="drawer glass" id="about-drawer" role="dialog" aria-modal="true" aria-label="Mais sobre Bruno" hidden>
+  <button class="drawer-close" data-close aria-label="Fechar">✕</button>
+
+  <div class="drawer__content">
+    <p class="label-mono">// sobre_mim</p>
+    <h2 class="section-title">{bio.greeting}</h2>
+    {bio.paragraphs.map((p) => <p class="drawer__text">{p}</p>)}
+
+    <p class="label-mono drawer__section-label">Skills técnicas</p>
+    <div class="skills">
+      {technicalSkills.map((skill) => (
+        <div class="skill-bar">
+          <div class="skill-bar__head">
+            <span>{skill.name}</span>
+            <span>{skill.percentage}%</span>
+          </div>
+          <div class="skill-bar__track">
+            <div class="skill-bar__fill" style={`width: ${skill.percentage}%`}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="label-mono drawer__section-label">Soft skills</p>
+    <div class="soft-skills">
+      {softSkills.map((s) => (
+        <div class="soft-skill glass">
+          <h4>{s.title}</h4>
+          <p>{s.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="label-mono drawer__section-label">Experiência</p>
+    <div class="timeline">
+      {experience.map((item) => (
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__body">
+            <h4>{item.title}</h4>
+            <span class="timeline__company">{item.company} · {item.period}</span>
+            <p>{item.description}</p>
+            <ul>
+              {item.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            <div class="timeline__tags">
+              {item.skills.map((s) => <span>{s}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="label-mono drawer__section-label">Educação</p>
+    <div class="education">
+      {education.map((item) => (
+        <div class="education__item glass">
+          <h4>{item.title}</h4>
+          <span>{item.institution} · {item.date}</span>
+          <p>{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="label-mono drawer__section-label">Certificações</p>
+    <div class="certifications">
+      {certifications.map((cert) => (
+        <div class="certification glass">
+          <h4>{cert.title}</h4>
+          <span>{cert.date}</span>
+          <p>{cert.description}</p>
+          {cert.badges && (
+            <div class="certification__badges">
+              {cert.badges.map((b) => <span>{b}</span>)}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 80;
+  }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(560px, 100%);
+    z-index: 81;
+    overflow-y: auto;
+    padding: 2.5rem 2rem;
+    border-left: 1px solid var(--glass-border);
+  }
+  .drawer-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .drawer__text {
+    color: var(--text-muted);
+    margin: 1rem 0;
+  }
+  .drawer__section-label {
+    margin: 2.5rem 0 1rem;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 1.5rem;
+  }
+
+  .skill-bar {
+    margin-bottom: 1rem;
+  }
+  .skill-bar__head {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+  .skill-bar__track {
+    height: 6px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .skill-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+
+  .soft-skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .soft-skill {
+    padding: 1rem;
+  }
+  .soft-skill h4 {
+    margin: 0 0 0.4rem;
+    font-size: 0.95rem;
+  }
+  .soft-skill p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .timeline__item {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--glass-border);
+    margin-bottom: 2rem;
+  }
+  .timeline__marker {
+    position: absolute;
+    left: -5px;
+    top: 4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .timeline__body h4 {
+    margin: 0 0 0.25rem;
+  }
+  .timeline__company {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+  .timeline__body p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+  .timeline__body ul {
+    padding-left: 1.1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .timeline__tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .timeline__tags span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: var(--accent);
+  }
+
+  .education__item,
+  .certification {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .education__item h4,
+  .certification h4 {
+    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+  }
+  .education__item span,
+  .certification span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+  }
+  .education__item p,
+  .certification p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0.5rem 0 0;
+  }
+  .certification__badges {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .certification__badges span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: var(--accent);
+  }
+
+  @media (max-width: 600px) {
+    .soft-skills {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
