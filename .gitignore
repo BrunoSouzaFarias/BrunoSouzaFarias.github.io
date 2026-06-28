@@ -28,8 +28,6 @@ build/
 # System files
 Thumbs.db
 
-# Package lock (optional)
-package-lock.json
 
 # Source files you may not want to track
 assets/img/*.psd
