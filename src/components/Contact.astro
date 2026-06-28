@@ -18,6 +18,9 @@ import { contactInfo } from '../data/profile';
 
     <div class="contact__direct glass">
       <p class="label-mono">Contato direto</p>
+      <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" class="contact__whatsapp">
+        ↗ WhatsApp
+      </a>
       <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
       <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn →</a>
       <a href={contactInfo.github} target="_blank" rel="noopener noreferrer">GitHub →</a>
@@ -78,6 +81,13 @@ import { contactInfo } from '../data/profile';
     color: var(--accent);
     font-family: var(--font-mono);
     font-size: 0.9rem;
+  }
+  .contact__whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 1rem !important;
   }
 
   @media (max-width: 720px) {

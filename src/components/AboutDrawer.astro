@@ -1,5 +1,5 @@
 ---
-import { bio, technicalSkills, softSkills, experience, education, certifications } from '../data/profile';
+import { bio, headline, softSkills, experience, education, certifications } from '../data/profile';
 ---
 
 <div class="drawer-backdrop" id="about-backdrop" hidden></div>
@@ -9,24 +9,10 @@ import { bio, technicalSkills, softSkills, experience, education, certifications
   <div class="drawer__content">
     <p class="label-mono">// sobre_mim</p>
     <h2 class="section-title">{bio.greeting}</h2>
+    <p class="drawer__headline">{headline}</p>
     {bio.paragraphs.map((p) => <p class="drawer__text">{p}</p>)}
 
-    <p class="label-mono drawer__section-label">Skills técnicas</p>
-    <div class="skills">
-      {technicalSkills.map((skill) => (
-        <div class="skill-bar">
-          <div class="skill-bar__head">
-            <span>{skill.name}</span>
-            <span>{skill.percentage}%</span>
-          </div>
-          <div class="skill-bar__track">
-            <div class="skill-bar__fill" style={`width: ${skill.percentage}%`}></div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <p class="label-mono drawer__section-label">Soft skills</p>
+    <p class="label-mono drawer__section-label">Competências</p>
     <div class="soft-skills">
       {softSkills.map((s) => (
         <div class="soft-skill glass">
@@ -74,11 +60,6 @@ import { bio, technicalSkills, softSkills, experience, education, certifications
           <h4>{cert.title}</h4>
           <span>{cert.date}</span>
           <p>{cert.description}</p>
-          {cert.badges && (
-            <div class="certification__badges">
-              {cert.badges.map((b) => <span>{b}</span>)}
-            </div>
-          )}
         </div>
       ))}
     </div>
@@ -115,6 +96,12 @@ import { bio, technicalSkills, softSkills, experience, education, certifications
     border-radius: var(--radius);
     cursor: pointer;
   }
+  .drawer__headline {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin: 0.5rem 0 1.5rem;
+  }
   .drawer__text {
     color: var(--text-muted);
     margin: 1rem 0;
@@ -123,28 +110,6 @@ import { bio, technicalSkills, softSkills, experience, education, certifications
     margin: 2.5rem 0 1rem;
     border-top: 1px solid var(--glass-border);
     padding-top: 1.5rem;
-  }
-
-  .skill-bar {
-    margin-bottom: 1rem;
-  }
-  .skill-bar__head {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    margin-bottom: 0.4rem;
-  }
-  .skill-bar__track {
-    height: 6px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .skill-bar__fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
   }
 
   .soft-skills {
@@ -234,20 +199,6 @@ import { bio, technicalSkills, softSkills, experience, education, certifications
     color: var(--text-muted);
     font-size: 0.85rem;
     margin: 0.5rem 0 0;
-  }
-  .certification__badges {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-  }
-  .certification__badges span {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--glass-border);
-    border-radius: 4px;
-    color: var(--accent);
   }
 
   @media (max-width: 600px) {

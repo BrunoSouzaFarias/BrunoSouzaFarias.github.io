@@ -1,24 +1,42 @@
+export const headline =
+  'Supervisor de Operações TI · Gestão de Processos Ágeis · ITIL · Full-Stack Developer';
+
 export const bio = {
   greeting: 'Olá, sou o Bruno 👋',
   paragraphs: [
     'Sou um profissional apaixonado por tecnologia e inovação, com experiência em supervisão de equipes de TI, desenvolvimento full stack e otimização de processos. Atualmente, lidero operações N1 na Liberty TI Health Tech, onde aprimoro processos de suporte técnico e automação de fluxos de atendimento para elevar a eficiência operacional.',
     '+10 anos de experiência em liderança e gestão (Supervisão de TI e Varejo). Desenvolvimento Full-Stack (React.js, Node.js, SQL, Docker, AWS). Metodologias Ágeis (Scrum, Kanban) e frameworks de governança de TI (ITIL).',
-    'Possuo 6 anos de experiência na Força Aérea Brasileira trabalhando em Recursos Humanos e Licitações. Atuei por 4 anos como Supervisor de Vendas em uma das maiores redes varejistas de artigos esportivos do Brasil (Centauro), e por 5 anos como Supervisor Administrativo Regional. Agora estou em transição profissional para a área de tecnologia, uma área onde sempre tive facilidade e paixão.',
-    'Além da faculdade de Análise e Desenvolvimento de Sistemas, estudo na Trybe, escola de tecnologia focada no desenvolvimento de carreiras de sucesso, com formação de mais de 1500 horas cobrindo fundamentos de desenvolvimento web, front-end, back-end, ciência da computação, metodologias ágeis e soft skills.',
+    'Com um background sólido no varejo e na tecnologia, trago uma visão estratégica que une liderança, gestão operacional e desenvolvimento de soluções inovadoras. Busco sempre aperfeiçoar processos e criar soluções tecnológicas eficientes, combinando expertise técnica e habilidades de gestão para impulsionar resultados e crescimento organizacional.',
+    'Atualmente curso Bacharelado em Cibersegurança na Universidade Anhanguera São Paulo, somado à formação Full Stack pela Trybe — mais de 1500 horas cobrindo front-end, back-end, ciência da computação e soft skills.',
   ],
 };
 
-export interface Skill {
+export interface StackItem {
   name: string;
-  percentage: number;
 }
 
-export const technicalSkills: Skill[] = [
-  { name: 'HTML5', percentage: 85 },
-  { name: 'CSS3', percentage: 80 },
-  { name: 'JavaScript', percentage: 65 },
-  { name: 'GitHub', percentage: 45 },
-  { name: 'Angular', percentage: 15 },
+export interface StackCategory {
+  label: string;
+  items: StackItem[];
+}
+
+export const stack: StackCategory[] = [
+  {
+    label: 'Frontend',
+    items: [{ name: 'React' }, { name: 'JavaScript' }, { name: 'HTML5' }, { name: 'CSS3' }],
+  },
+  {
+    label: 'Backend',
+    items: [{ name: 'Node.js' }, { name: 'SQL' }],
+  },
+  {
+    label: 'Cloud & DevOps',
+    items: [{ name: 'AWS' }, { name: 'Docker' }],
+  },
+  {
+    label: 'Gestão & Processos',
+    items: [{ name: 'ITIL' }, { name: 'Scrum' }, { name: 'Kanban' }, { name: 'Jira' }],
+  },
 ];
 
 export interface SoftSkill {
@@ -28,20 +46,20 @@ export interface SoftSkill {
 
 export const softSkills: SoftSkill[] = [
   {
+    title: 'Gestão de TI',
+    description: 'Supervisão de equipes e operações de suporte técnico, com foco em SLA e qualidade.',
+  },
+  {
+    title: 'Automação de Processos',
+    description: 'Automação de fluxos de atendimento para elevar a eficiência operacional.',
+  },
+  {
+    title: 'Data-Driven Decision Making',
+    description: 'Uso de indicadores e dados para apoiar decisões e priorização de melhorias.',
+  },
+  {
     title: 'Liderança',
-    description: 'Experiência em liderar e desenvolver equipes, com foco em resultados e treinamento.',
-  },
-  {
-    title: 'Comunicação',
-    description: 'Comunicação clara com stakeholders e equipes, facilitando alinhamento e execução.',
-  },
-  {
-    title: 'Resolução de Problemas',
-    description: 'Abordagem analítica para identificar causas e implementar soluções práticas.',
-  },
-  {
-    title: 'Trabalho em Equipe',
-    description: 'Integração em times multidisciplinares, com foco colaborativo e entrega contínua.',
+    description: 'Mais de 10 anos liderando e desenvolvendo equipes, com foco em resultados.',
   },
 ];
 
@@ -56,60 +74,58 @@ export interface ExperienceItem {
 
 export const experience: ExperienceItem[] = [
   {
-    title: 'Supervisor TI / Supervisor de Operações N1',
+    title: 'Supervisor TI | Liberty TI',
     company: 'Liberty Health',
-    period: 'agosto de 2024 - Presente',
+    period: 'agosto de 2024 - Presente · 1 ano 11 meses',
     description:
-      'Atuo como Supervisor de Operações N1 na Liberty TI Health Tech, liderando a equipe de suporte técnico de primeiro nível. Sou responsável por otimizar processos de atendimento, automação de fluxos e melhoria da eficiência operacional em soluções de saúde pública (SGHX).',
+      'Supervisor de Operações N1 na Liberty TI Health Tech, lidero a equipe de suporte técnico de primeiro nível, garantindo excelência no atendimento e resolução eficiente de chamados. Foco em otimizar processos, fortalecer a comunicação com clientes e impulsionar a performance da equipe no setor de saúde pública, com o sistema SGHX.',
     bullets: [
-      'Liderança da equipe N1, garantindo SLAs e qualidade no atendimento.',
-      'Automação de fluxos e otimização de processos para redução de tempo médio de resolução.',
-      'Interface com times de desenvolvimento para priorização de correções e melhorias.',
-      'Uso de ferramentas como Jira para gestão de backlog e acompanhamento de entregas.',
+      'Liderança da equipe de suporte N1, garantindo qualidade e eficiência no atendimento.',
+      'Otimização de processos e fortalecimento da comunicação com clientes.',
+      'Soluções inovadoras e práticas para o setor de saúde pública (sistema SGHX).',
     ],
-    skills: ['Suporte Técnico', 'Automação', 'Gestão de TI'],
+    skills: ['Suporte Técnico', 'Gestão de TI', 'Liderança'],
   },
   {
-    title: 'Supervisor de Vendas',
-    company: 'Centauro',
-    period: '2016 - 2020 | 4 anos',
+    title: 'Suporte de sistemas de TI',
+    company: 'Liberty Health',
+    period: 'julho de 2023 - agosto de 2024 · 1 ano 2 meses',
     description:
-      'Supervisão de equipe de vendas, gestão de operações em loja, treinamento de pessoal e atendimento ao cliente em grande rede varejista.',
+      'Suporte técnico especializado em software, identificando e solucionando problemas de sistemas de TI, com colaboração ativa em processos de planejamento ágil.',
     bullets: [
-      'Supervisão direta de equipes de 20+ vendedores e treinamento contínuo.',
-      'Alcance consistente de metas de vendas (média de 98% das metas mensais).',
-      'Implementação de ações para melhoria do atendimento e aumento da conversão de vendas.',
-      'Análise de performance por indicadores e feedback estruturado para equipes.',
+      'Implementação e configuração de soluções de software em ambiente corporativo.',
+      'Colaboração com equipes de desenvolvimento em reuniões e planejamento ágil.',
+      'Gerenciamento de projetos e backlog via Jira; adoção de Scrum e Kanban.',
     ],
-    skills: ['Liderança', 'Vendas', 'Gestão de Equipe'],
+    skills: ['Suporte Técnico', 'Jira', 'Scrum', 'Kanban'],
   },
   {
-    title: 'Supervisor Administrativo Regional',
-    company: 'Centauro',
-    period: '2020 - 2025 | 5 anos',
+    title: 'Supervisor de vendas',
+    company: 'Grupo SBF S/A.',
+    period: 'agosto de 2016 - agosto de 2019 · 3 anos 1 mês',
     description:
-      'Gestão administrativa regional, coordenação de múltiplas unidades, planejamento estratégico e relatórios de desempenho.',
+      'Líder do time de vendas, com negociação de preços e prazos de entrega, estabelecendo metas para o cumprimento dos objetivos da área comercial.',
     bullets: [
-      'Coordenação de operações em várias unidades com foco em eficiência operacional.',
-      'Controle de processos e implementação de melhorias que reduziram retrabalhos operacionais.',
-      'Responsável por fechamento e análise de indicadores regionais e apoio na tomada de decisão.',
-      'Formação e desenvolvimento de líderes locais para melhorar autonomia das equipes.',
+      'Liderança do time de vendas e negociação com fornecedores e clientes.',
+      'Definição e acompanhamento de metas comerciais.',
     ],
-    skills: ['Gestão Regional', 'Administração', 'Análise de Dados'],
+    skills: ['Liderança', 'Vendas', 'Negociação'],
   },
   {
-    title: 'Especialista em Recursos Humanos',
-    company: 'Força Aérea Brasileira',
-    period: '2012 - 2016 | 6 anos',
-    description:
-      'Gestão de recursos humanos, licitações, recrutamento e seleção de pessoal militar, desenvolvimento de políticas internas e cumprimento de regulamentações federais.',
-    bullets: [
-      'Recrutamento e seleção com foco em conformidade e perfil técnico-operacional.',
-      'Condução e apoio em processos de licitação e contratos administrativos.',
-      'Gestão de documentação, protocolos e atendimento a demandas regulatórias.',
-      'Desenvolvimento de treinamentos e políticas internas para qualificação de equipes.',
-    ],
-    skills: ['Recursos Humanos', 'Licitações', 'Administração Pública'],
+    title: 'Supervisor administrativo Regional',
+    company: 'Grupo SBF S/A.',
+    period: 'outubro de 2012 - outubro de 2016 · 4 anos 1 mês',
+    description: 'Lançamento e atualização no banco de dados via SAP/Datasul de 16 lojas de São Paulo.',
+    bullets: ['Gestão administrativa regional de 16 lojas.', 'Atualização e controle de dados via SAP/Datasul.'],
+    skills: ['Gestão Regional', 'SAP/Datasul', 'Administração'],
+  },
+  {
+    title: 'Vendedor de varejo',
+    company: 'Grupo SBF',
+    period: 'março de 2011 - junho de 2011 · 4 meses',
+    description: 'Vendas de artigos esportivos em geral.',
+    bullets: ['Atendimento e vendas no varejo de artigos esportivos.'],
+    skills: ['Vendas', 'Atendimento ao Cliente'],
   },
 ];
 
@@ -122,23 +138,17 @@ export interface EducationItem {
 
 export const education: EducationItem[] = [
   {
-    title: 'Análise e Desenvolvimento de Sistemas',
-    institution: 'Universidade Paulista (UNIP)',
-    date: '2023 - Presente',
-    description: 'Curso superior focado em análise, desenvolvimento e gestão de sistemas de informação.',
+    title: 'Bacharelado em Cibersegurança',
+    institution: 'Universidade Anhanguera São Paulo',
+    date: 'janeiro de 2023 - julho de 2025',
+    description: 'Curso superior com foco em segurança da informação, redes e proteção de sistemas.',
   },
   {
     title: 'Formação Full Stack Web',
     institution: 'Trybe - Escola de Tecnologia',
-    date: '2023 - Presente',
+    date: 'fevereiro de 2023 - fevereiro de 2024',
     description:
       'Programa intensivo com mais de 1500 horas cobrindo front-end, back-end, ciência da computação e soft skills.',
-  },
-  {
-    title: 'Formação e Especializações',
-    institution: 'Força Aérea Brasileira',
-    date: '2012 - 2016',
-    description: 'Cursos de formação, liderança e especialização administrativa.',
   },
 ];
 
@@ -146,50 +156,40 @@ export interface Certification {
   title: string;
   date: string;
   description: string;
-  badges?: string[];
 }
 
 export const certifications: Certification[] = [
   {
-    title: 'Formação em Desenvolvimento Full Stack',
-    date: 'Trybe (2023 - 2024)',
-    description:
-      'Programa Full Stack com foco em front-end, back-end, fundamentos e práticas de mercado (1500+ horas).',
-    badges: ['Full Stack', 'React', 'Node.js'],
+    title: 'Formação em Desenvolvimento Full-Stack',
+    date: 'Trybe',
+    description: 'Programa Full Stack com foco em front-end, back-end, fundamentos e práticas de mercado.',
   },
   {
-    title: 'Fundamentals of Web Development',
-    date: 'Module',
-    description: 'Módulo introdutório com foco em HTML, CSS e JavaScript.',
+    title: 'Front-End Development',
+    date: 'Trybe',
+    description: 'Módulo com foco em HTML, CSS, JavaScript e construção de interfaces.',
   },
   {
     title: 'Módulo - Desenvolvimento em Back End',
-    date: 'Module',
+    date: 'Trybe',
     description: 'Conteúdo sobre Node.js, APIs, bancos de dados e arquitetura de serviços.',
   },
   {
-    title: 'Cloud Fundamentals & Administration',
-    date: 'Cloud Fundamentals',
-    description: 'Introdução a conceitos de cloud, administração e arquitetura de soluções (AWS/Cloud Fundamentals).',
+    title: 'Module - Fundamentals of Web Development',
+    date: 'Trybe',
+    description: 'Módulo introdutório com foco em fundamentos de desenvolvimento web.',
   },
   {
-    title: 'UNIP - Análise e Desenvolvimento de Sistemas',
-    date: 'Em Andamento',
-    description:
-      'Curso superior em Análise e Desenvolvimento de Sistemas. Formação em programação, banco de dados, desenvolvimento de software e gestão de projetos.',
-    badges: ['Educação Superior', 'Programação', 'Análise'],
-  },
-  {
-    title: 'JavaScript Avançado',
-    date: '2024',
-    description:
-      'Curso avançado em JavaScript, cobrindo programação orientada a objetos, manipulação do DOM, APIs e JavaScript assíncrono.',
-    badges: ['JavaScript', 'OOP', 'Async'],
+    title: 'Cloud Fundamentals, Administration and Solution Architect',
+    date: 'Cloud',
+    description: 'Conceitos de cloud, administração e arquitetura de soluções.',
   },
 ];
 
 export const contactInfo = {
   email: 'brunodesouzafarias@yahoo.com.br',
+  phone: '11983292388',
+  whatsapp: 'https://wa.me/5511983292388',
   linkedin: 'https://www.linkedin.com/in/bruno-souza-farias/',
   github: 'https://github.com/BrunoSouzaFarias',
   instagram: 'https://www.instagram.com/brusf13/',

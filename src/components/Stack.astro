@@ -1,0 +1,80 @@
+---
+import { stack } from '../data/profile';
+---
+
+<section class="stack container" id="stack">
+  <p class="label-mono">// stack</p>
+  <h2 class="section-title">Com o que eu trabalho</h2>
+  <p class="stack__intro">Ferramentas e práticas que uso no dia a dia para entregar produtos sólidos.</p>
+
+  <div class="stack__grid">
+    {stack.map((category) => (
+      <div class="stack__category glass">
+        <p class="label-mono stack__category-label">{category.label}</p>
+        <ul class="stack__items">
+          {category.items.map((item) => (
+            <li>
+              <span class="stack__badge">{item.name.charAt(0)}</span>
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .stack {
+    padding: 6rem 24px;
+  }
+  .stack__intro {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+  }
+  .stack__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .stack__category {
+    padding: 1.5rem;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .stack__category:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+  .stack__category-label {
+    margin-bottom: 1.25rem;
+  }
+  .stack__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .stack__items li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+  }
+  .stack__badge {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--glass-bg);
+  }
+</style>
