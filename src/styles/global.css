@@ -141,3 +141,54 @@ h3 {
 [hidden] {
   display: none !important;
 }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.custom-cursor--dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.custom-cursor--ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent);
+  opacity: 0.6;
+  transition: width 200ms ease, height 200ms ease, opacity 200ms ease, box-shadow 200ms ease;
+}
+
+.custom-cursor--ring.is-active {
+  width: 48px;
+  height: 48px;
+  opacity: 1;
+  box-shadow: 0 0 16px var(--border);
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role='button'] {
+  cursor: none;
+}

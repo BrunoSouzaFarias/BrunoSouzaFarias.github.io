@@ -2,23 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import Highlights from '../components/Highlights.astro';
 import Stack from '../components/Stack.astro';
 import Work from '../components/Work.astro';
 import AboutDrawer from '../components/AboutDrawer.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import ScrollTopButton from '../components/ScrollTopButton.astro';
 ---
 
 <Layout>
   <Header />
   <main>
     <Hero />
+    <Highlights />
     <Stack />
     <Work />
     <Contact />
   </main>
   <AboutDrawer />
   <Footer />
+  <ScrollTopButton />
 
   <script>
     import { initTheme } from '../scripts/theme';
@@ -30,6 +34,11 @@ import Footer from '../components/Footer.astro';
       initContactForm,
       initScrollActiveNav,
     } from '../scripts/interactions';
+    import { initScrollReveal } from '../scripts/scroll-reveal';
+    import { initCursorGlow } from '../scripts/cursor-glow';
+    import { initCountUp } from '../scripts/count-up';
+    import { initScrollTopButton } from '../scripts/scroll-top-button';
+    import { initCustomCursor } from '../scripts/custom-cursor';
 
     initTheme();
     initParticleNetwork('particle-canvas');
@@ -38,5 +47,10 @@ import Footer from '../components/Footer.astro';
     initCaseStudyModal();
     initContactForm();
     initScrollActiveNav();
+    initScrollReveal();
+    initCursorGlow();
+    initCountUp();
+    initScrollTopButton();
+    initCustomCursor();
   </script>
 </Layout>

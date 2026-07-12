@@ -72,6 +72,11 @@ import { bio, headline, softSkills, experience, education, certifications } from
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 80;
+    opacity: 0;
+    transition: opacity 280ms ease;
+  }
+  .drawer-backdrop.is-open {
+    opacity: 1;
   }
   .drawer {
     position: fixed;
@@ -83,6 +88,11 @@ import { bio, headline, softSkills, experience, education, certifications } from
     overflow-y: auto;
     padding: 2.5rem 2rem;
     border-left: 1px solid var(--glass-border);
+    transform: translateX(100%);
+    transition: transform 280ms ease;
+  }
+  .drawer.is-open {
+    transform: translateX(0);
   }
   .drawer-close {
     position: absolute;

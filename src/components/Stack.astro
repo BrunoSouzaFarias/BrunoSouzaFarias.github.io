@@ -1,15 +1,17 @@
 ---
 import { stack } from '../data/profile';
+import CircuitLines from './CircuitLines.astro';
 ---
 
 <section class="stack container" id="stack">
+  <CircuitLines variant="section" />
   <p class="label-mono">// stack</p>
   <h2 class="section-title">Com o que eu trabalho</h2>
   <p class="stack__intro">Ferramentas e práticas que uso no dia a dia para entregar produtos sólidos.</p>
 
-  <div class="stack__grid">
+  <div class="stack__grid" data-reveal-group>
     {stack.map((category) => (
-      <div class="stack__category glass">
+      <div class="stack__category glass reveal">
         <p class="label-mono stack__category-label">{category.label}</p>
         <ul class="stack__items">
           {category.items.map((item) => (
@@ -26,6 +28,7 @@ import { stack } from '../data/profile';
 
 <style>
   .stack {
+    position: relative;
     padding: 6rem 24px;
   }
   .stack__intro {
@@ -38,12 +41,35 @@ import { stack } from '../data/profile';
     gap: 1.25rem;
   }
   .stack__category {
+    position: relative;
+    overflow: hidden;
     padding: 1.5rem;
     transition: border-color var(--transition), transform var(--transition);
+    --x: 50%;
+    --y: 50%;
   }
   .stack__category:hover {
     border-color: var(--accent);
     transform: translateY(-4px);
+  }
+  .stack__category::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    background: radial-gradient(240px circle at var(--x) var(--y), color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+  }
+  .stack__category:hover::before,
+  .stack__category:focus-visible::before {
+    opacity: 1;
+  }
+  .stack__category-label,
+  .stack__items {
+    position: relative;
+    z-index: 1;
   }
   .stack__category-label {
     margin-bottom: 1.25rem;

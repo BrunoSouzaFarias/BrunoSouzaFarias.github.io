@@ -7,8 +7,8 @@ import { contactInfo } from '../data/profile';
   <h2 class="section-title">Vamos conversar?</h2>
   <p class="contact__intro">Aberto a oportunidades de trabalho e projetos freelance.</p>
 
-  <div class="contact__grid">
-    <form class="contact__form glass" id="contactForm">
+  <div class="contact__grid" data-reveal-group>
+    <form class="contact__form glass reveal" id="contactForm">
       <input type="text" placeholder="Seu nome" class="contact__input" id="contactName" required aria-label="Nome" />
       <input type="email" placeholder="Seu email" class="contact__input" id="contactEmail" required aria-label="Email" />
       <textarea placeholder="Sua mensagem" id="contactMessage" rows="6" class="contact__input" required aria-label="Mensagem"></textarea>
@@ -16,7 +16,7 @@ import { contactInfo } from '../data/profile';
       <button type="submit" class="btn">Enviar mensagem</button>
     </form>
 
-    <div class="contact__direct glass">
+    <div class="contact__direct glass reveal">
       <p class="label-mono">Contato direto</p>
       <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" class="contact__whatsapp">
         ↗ WhatsApp

@@ -11,6 +11,7 @@
         <li><a href="#stack" class="nav__link">Stack</a></li>
         <li><a href="#work" class="nav__link">Work</a></li>
         <li><a href="#contact" class="nav__link">Contato</a></li>
+        <span class="nav__indicator" aria-hidden="true"></span>
       </ul>
     </div>
 
@@ -51,6 +52,7 @@
   }
 
   .nav__list {
+    position: relative;
     display: flex;
     gap: 2rem;
     list-style: none;
@@ -68,6 +70,21 @@
   .nav__link:hover,
   .nav__link.active {
     color: var(--accent);
+  }
+
+  .nav__indicator {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--border);
+    opacity: 0;
+    transform: translateX(0);
+    transition: transform 250ms ease, width 250ms ease, opacity 200ms ease;
+    pointer-events: none;
   }
 
   .nav__actions {

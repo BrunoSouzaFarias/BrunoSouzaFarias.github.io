@@ -1,15 +1,17 @@
 ---
 import { projects } from '../data/projects';
+import CircuitLines from './CircuitLines.astro';
 ---
 
 <section class="work container" id="work">
+  <CircuitLines variant="section" />
   <p class="label-mono">// projetos</p>
   <h2 class="section-title">Work</h2>
   <p class="work__intro">Clique em um projeto para ver o case study completo.</p>
 
-  <div class="work__grid">
+  <div class="work__grid" data-reveal-group>
     {projects.map((project) => (
-      <article class="work__card glass" data-project={project.slug} tabindex="0" role="button" aria-haspopup="dialog">
+      <article class="work__card glass reveal" data-project={project.slug} tabindex="0" role="button" aria-haspopup="dialog">
         <div class="work__thumb">
           <img src={project.thumbnail} alt={`Captura de tela do projeto ${project.title}`} loading="lazy" />
         </div>
@@ -57,6 +59,7 @@ import { projects } from '../data/projects';
 
 <style>
   .work {
+    position: relative;
     padding: 8rem 24px;
   }
   .work__intro {
@@ -69,9 +72,12 @@ import { projects } from '../data/projects';
     gap: 1.5rem;
   }
   .work__card {
+    position: relative;
     cursor: pointer;
     overflow: hidden;
     transition: transform var(--transition), box-shadow var(--transition);
+    --x: 50%;
+    --y: 50%;
   }
   .work__card:hover,
   .work__card:focus-visible {
@@ -79,7 +85,23 @@ import { projects } from '../data/projects';
     box-shadow: 0 12px 32px var(--border);
     outline: none;
   }
+  .work__card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    background: radial-gradient(240px circle at var(--x) var(--y), color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+  }
+  .work__card:hover::before,
+  .work__card:focus-visible::before {
+    opacity: 1;
+  }
   .work__thumb {
+    position: relative;
+    z-index: 1;
     aspect-ratio: 16 / 10;
     overflow: hidden;
   }
@@ -93,6 +115,8 @@ import { projects } from '../data/projects';
     transform: scale(1.05);
   }
   .work__info {
+    position: relative;
+    z-index: 1;
     padding: 1.5rem;
   }
   .work__info h3 {
@@ -126,6 +150,11 @@ import { projects } from '../data/projects';
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 90;
+    opacity: 0;
+    transition: opacity 280ms ease;
+  }
+  .modal-backdrop.is-open {
+    opacity: 1;
   }
   .modal-overlay {
     position: fixed;
@@ -144,6 +173,13 @@ import { projects } from '../data/projects';
     overflow-y: auto;
     padding: 2.5rem;
     background: var(--bg-elevated);
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+    transition: opacity 280ms ease, transform 280ms ease;
+  }
+  .modal-overlay.is-open .modal-panel {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
   .modal-close {
     position: absolute;

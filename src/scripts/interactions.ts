@@ -1,3 +1,39 @@
+import { prefersReducedMotion } from './motion';
+
+const SURFACE_TRANSITION_MS = 300;
+
+function openSurface(el: Element | null) {
+  if (!el) return;
+  el.removeAttribute('hidden');
+  requestAnimationFrame(() => el.classList.add('is-open'));
+}
+
+function closeSurface(el: Element | null) {
+  if (!el) return;
+  el.classList.remove('is-open');
+  const applyHidden = () => el.setAttribute('hidden', '');
+
+  if (prefersReducedMotion()) {
+    applyHidden();
+    return;
+  }
+
+  let finished = false;
+  const onEnd = (e: Event) => {
+    if (e.target !== el) return;
+    finished = true;
+    el.removeEventListener('transitionend', onEnd);
+    applyHidden();
+  };
+  el.addEventListener('transitionend', onEnd);
+  setTimeout(() => {
+    if (!finished) {
+      el.removeEventListener('transitionend', onEnd);
+      applyHidden();
+    }
+  }, SURFACE_TRANSITION_MS + 50);
+}
+
 function trapFocus(container: HTMLElement) {
   const focusable = container.querySelectorAll<HTMLElement>(
     'a[href], button, textarea, input, [tabindex]:not([tabindex="-1"])'
@@ -38,14 +74,14 @@ export function initAboutDrawer() {
 
   function open() {
     lastFocused = document.activeElement as HTMLElement;
-    drawer?.removeAttribute('hidden');
-    backdrop?.removeAttribute('hidden');
+    openSurface(drawer);
+    openSurface(backdrop);
     document.body.style.overflow = 'hidden';
     if (drawer) trapFocus(drawer);
   }
   function close() {
-    drawer?.setAttribute('hidden', '');
-    backdrop?.setAttribute('hidden', '');
+    closeSurface(drawer);
+    closeSurface(backdrop);
     document.body.style.overflow = '';
     lastFocused?.focus();
   }
@@ -70,12 +106,14 @@ export function initCaseStudyModal() {
     const panel = document.getElementById(`case-study-${slug}`);
     panel?.removeAttribute('hidden');
     lastFocused = document.activeElement as HTMLElement;
-    overlay?.removeAttribute('hidden');
+    openSurface(overlay);
+    openSurface(backdrop);
     document.body.style.overflow = 'hidden';
     if (overlay) trapFocus(overlay);
   }
   function close() {
-    overlay?.setAttribute('hidden', '');
+    closeSurface(overlay);
+    closeSurface(backdrop);
     document.body.style.overflow = '';
     lastFocused?.focus();
   }
@@ -131,24 +169,42 @@ export function initContactForm() {
   });
 }
 
+function positionNavIndicator(link: HTMLElement | null) {
+  const indicator = document.querySelector<HTMLElement>('.nav__indicator');
+  const list = document.querySelector<HTMLElement>('.nav__list');
+  if (!indicator || !list) return;
+  if (!link) {
+    indicator.style.opacity = '0';
+    return;
+  }
+  const listRect = list.getBoundingClientRect();
+  const linkRect = link.getBoundingClientRect();
+  indicator.style.width = `${linkRect.width}px`;
+  indicator.style.transform = `translateX(${linkRect.left - listRect.left}px)`;
+  indicator.style.opacity = '1';
+}
+
 export function initScrollActiveNav() {
   const sections = document.querySelectorAll<HTMLElement>('main section[id]');
-  const links = document.querySelectorAll<HTMLAnchorElement>('.nav__link');
 
   function onScroll() {
     const scrollY = window.scrollY;
+    let activeLink: HTMLElement | null = null;
     sections.forEach((section) => {
       const top = section.offsetTop - 80;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
-      const link = document.querySelector(`.nav__link[href="#${id}"]`);
+      const link = document.querySelector<HTMLElement>(`.nav__link[href="#${id}"]`);
       if (scrollY > top && scrollY <= top + height) {
         link?.classList.add('active');
+        activeLink = link;
       } else {
         link?.classList.remove('active');
       }
     });
+    positionNavIndicator(activeLink);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 }

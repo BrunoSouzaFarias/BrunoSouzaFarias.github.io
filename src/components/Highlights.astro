@@ -1,0 +1,52 @@
+---
+import { projects } from '../data/projects';
+
+// "10 anos" e "1500 horas" vêm das frases em profile.ts (bio.paragraphs[1] e
+// education[1].description) — mantidos aqui como constantes porque não são
+// campos estruturados nos dados de origem.
+const stats = [
+  { value: 10, suffix: '+', label: 'Anos de liderança e gestão' },
+  { value: projects.length, suffix: '', label: 'Projetos publicados' },
+  { value: 1500, suffix: '+', label: 'Horas de formação Full Stack' },
+];
+---
+
+<section class="highlights container">
+  <div class="highlights__grid" data-reveal-group>
+    {stats.map((s) => (
+      <div class="highlight glass reveal">
+        <span class="highlight__number">
+          <span class="highlight__count" data-count-to={s.value}>0</span>{s.suffix}
+        </span>
+        <p class="highlight__label label-mono">{s.label}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .highlights {
+    padding: 3rem 24px 0;
+  }
+  .highlights__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .highlight {
+    padding: 1.75rem;
+    text-align: center;
+  }
+  .highlight__number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 24px var(--border);
+  }
+  .highlight__label {
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+  }
+</style>

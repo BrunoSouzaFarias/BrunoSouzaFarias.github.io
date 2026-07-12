@@ -1,0 +1,62 @@
+---
+interface Props {
+  variant?: 'hero' | 'section';
+}
+const { variant = 'section' } = Astro.props;
+---
+
+<svg
+  class={`circuit-lines circuit-lines--${variant}`}
+  aria-hidden="true"
+  viewBox="0 0 800 600"
+  preserveAspectRatio="none"
+>
+  <path class="circuit-line" d="M0 120 H240 L280 160 V320 H520 L560 360 V600" />
+  <path class="circuit-line circuit-line--delay1" d="M800 80 H540 L500 120 V260 H260 L220 300 V600" />
+  <path class="circuit-line circuit-line--delay2" d="M0 480 H160 L200 440 V220 H420 L460 180 V0" />
+  <circle class="circuit-node" cx="240" cy="120" r="4" />
+  <circle class="circuit-node" cx="520" cy="320" r="4" />
+  <circle class="circuit-node" cx="540" cy="80" r="4" />
+  <circle class="circuit-node" cx="260" cy="260" r="4" />
+  <circle class="circuit-node" cx="160" cy="480" r="4" />
+  <circle class="circuit-node" cx="420" cy="220" r="4" />
+</svg>
+
+<style>
+  .circuit-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.12;
+  }
+
+  .circuit-line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    stroke-dasharray: 12 8;
+    animation: circuitFlow 6s linear infinite;
+  }
+
+  .circuit-line--delay1 {
+    stroke: var(--accent-2);
+    animation-delay: -2s;
+  }
+
+  .circuit-line--delay2 {
+    animation-delay: -4s;
+  }
+
+  .circuit-node {
+    fill: var(--accent);
+  }
+
+  @keyframes circuitFlow {
+    to {
+      stroke-dashoffset: -160;
+    }
+  }
+</style>

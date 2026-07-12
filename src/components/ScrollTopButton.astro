@@ -1,0 +1,31 @@
+---
+---
+
+<button id="scroll-top-btn" class="scroll-top glass" aria-label="Voltar ao topo" hidden>↑</button>
+
+<style>
+  .scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 60;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 250ms ease, transform 250ms ease, border-color var(--transition);
+  }
+  .scroll-top:hover {
+    border-color: var(--accent);
+  }
+  .scroll-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
