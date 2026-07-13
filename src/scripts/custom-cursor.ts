@@ -13,15 +13,30 @@ export function initCustomCursor() {
 
   let ringX = 0;
   let ringY = 0;
+  let currentRingX = 0;
+  let currentRingY = 0;
+  let initialized = false;
 
   window.addEventListener('mousemove', (e) => {
-    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     ringX = e.clientX;
     ringY = e.clientY;
+
+    if (!initialized) {
+      currentRingX = ringX;
+      currentRingY = ringY;
+      initialized = true;
+      dot.style.opacity = '1';
+      ring.style.opacity = '0.6';
+    }
   });
 
   function follow() {
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+    if (initialized) {
+      currentRingX += (ringX - currentRingX) * 0.15;
+      currentRingY += (ringY - currentRingY) * 0.15;
+      ring.style.transform = `translate(${currentRingX}px, ${currentRingY}px) translate(-50%, -50%)`;
+    }
     requestAnimationFrame(follow);
   }
   requestAnimationFrame(follow);
@@ -33,4 +48,16 @@ export function initCustomCursor() {
   document.addEventListener('mouseout', (e) => {
     if ((e.target as HTMLElement).closest?.(hoverables)) ring.classList.remove('is-active');
   });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    if (initialized) {
+      dot.style.opacity = '1';
+      ring.style.opacity = '0.6';
+    }
+  });
 }
+

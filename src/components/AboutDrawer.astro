@@ -129,6 +129,12 @@ import { bio, headline, softSkills, experience, education, certifications } from
   }
   .soft-skill {
     padding: 1rem;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .soft-skill:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--border);
   }
   .soft-skill h4 {
     margin: 0 0 0.4rem;
@@ -145,6 +151,10 @@ import { bio, headline, softSkills, experience, education, certifications } from
     padding-left: 1.5rem;
     border-left: 1px solid var(--glass-border);
     margin-bottom: 2rem;
+    transition: border-color var(--transition);
+  }
+  .timeline__item:hover {
+    border-left-color: var(--accent);
   }
   .timeline__marker {
     position: absolute;
@@ -155,6 +165,11 @@ import { bio, headline, softSkills, experience, education, certifications } from
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 0 8px var(--accent);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .timeline__item:hover .timeline__marker {
+    transform: scale(1.3);
+    box-shadow: 0 0 14px var(--accent);
   }
   .timeline__body h4 {
     margin: 0 0 0.25rem;
@@ -192,6 +207,13 @@ import { bio, headline, softSkills, experience, education, certifications } from
   .certification {
     padding: 1rem;
     margin-bottom: 1rem;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .education__item:hover,
+  .certification:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--border);
   }
   .education__item h4,
   .certification h4 {

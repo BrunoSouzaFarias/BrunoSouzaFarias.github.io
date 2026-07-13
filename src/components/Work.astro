@@ -34,24 +34,26 @@ import CircuitLines from './CircuitLines.astro';
     <button class="modal-close" data-close aria-label="Fechar case study">✕</button>
     {projects.map((project) => (
       <div class="case-study" id={`case-study-${project.slug}`} hidden>
-        <p class="label-mono">{project.tech.join(' · ')}</p>
-        <h3>{project.title}</h3>
-        <img src={project.thumbnail} alt={`Captura de tela do projeto ${project.title}`} class="case-study__img" />
-
-        <div class="case-study__block">
-          <p class="label-mono">Problema</p>
-          <p>{project.problem}</p>
+        <div class="case-study__sidebar">
+          <p class="label-mono">{project.tech.join(' · ')}</p>
+          <h3>{project.title}</h3>
+          <img src={project.thumbnail} alt={`Captura de tela do projeto ${project.title}`} class="case-study__img" />
+          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="btn case-study__btn">Ver repositório →</a>
         </div>
-        <div class="case-study__block">
-          <p class="label-mono">Solução</p>
-          <p>{project.solution}</p>
+        <div class="case-study__content">
+          <div class="case-study__block glass">
+            <p class="label-mono">// problema</p>
+            <p>{project.problem}</p>
+          </div>
+          <div class="case-study__block glass">
+            <p class="label-mono">// solução</p>
+            <p>{project.solution}</p>
+          </div>
+          <div class="case-study__block glass">
+            <p class="label-mono">// resultado</p>
+            <p>{project.result}</p>
+          </div>
         </div>
-        <div class="case-study__block">
-          <p class="label-mono">Resultado</p>
-          <p>{project.result}</p>
-        </div>
-
-        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="btn">Ver repositório →</a>
       </div>
     ))}
   </div>
@@ -167,7 +169,7 @@ import CircuitLines from './CircuitLines.astro';
   }
   .modal-panel {
     position: relative;
-    max-width: 640px;
+    max-width: 900px;
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
@@ -192,6 +194,24 @@ import CircuitLines from './CircuitLines.astro';
     height: 36px;
     border-radius: var(--radius);
     cursor: pointer;
+    z-index: 2;
+  }
+  .case-study {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .case-study {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .case-study__sidebar {
+      position: sticky;
+      top: 0;
+    }
   }
   .case-study__img {
     width: 100%;
@@ -199,10 +219,24 @@ import CircuitLines from './CircuitLines.astro';
     margin: 1.5rem 0;
     border: 1px solid var(--glass-border);
   }
-  .case-study__block {
-    margin-bottom: 1.5rem;
+  .case-study__btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .case-study__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .case-study__block.glass {
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
   }
   .case-study__block p:last-child {
     margin-top: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
   }
 </style>

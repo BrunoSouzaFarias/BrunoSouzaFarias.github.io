@@ -140,6 +140,7 @@ export function initCaseStudyModal() {
 export function initContactForm() {
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   const feedback = document.getElementById('contactFeedback');
+  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
@@ -162,10 +163,63 @@ export function initContactForm() {
       return;
     }
 
-    // Sem backend configurado ainda — próximo passo é integrar EmailJS aqui.
-    feedback.textContent = 'Mensagem registrada! Em breve entro em contato.';
-    feedback.className = 'contact__feedback contact__feedback--success';
-    form.reset();
+    const serviceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.warn(
+        'EmailJS keys are missing. Form submission is running in simulated demo mode. ' +
+        'To connect a live form, set PUBLIC_EMAILJS_SERVICE_ID, PUBLIC_EMAILJS_TEMPLATE_ID, ' +
+        'and PUBLIC_EMAILJS_PUBLIC_KEY in your environment variables.'
+      );
+      feedback.textContent = 'Mensagem registrada! Em breve entro em contato.';
+      feedback.className = 'contact__feedback contact__feedback--success';
+      form.reset();
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+    }
+
+    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: publicKey,
+        template_params: {
+          from_name: name,
+          reply_to: email,
+          message: message,
+        },
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          feedback.textContent = 'Mensagem enviada com sucesso! Em breve entrarei em contato.';
+          feedback.className = 'contact__feedback contact__feedback--success';
+          form.reset();
+        } else {
+          throw new Error('Falha ao enviar mensagem via EmailJS.');
+        }
+      })
+      .catch((err) => {
+        console.error('EmailJS Error:', err);
+        feedback.textContent = 'Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.';
+        feedback.className = 'contact__feedback contact__feedback--error';
+      })
+      .finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar mensagem';
+        }
+      });
   });
 }
 

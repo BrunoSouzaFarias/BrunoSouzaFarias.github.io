@@ -5,25 +5,26 @@ interface Props {
 const { variant = 'section' } = Astro.props;
 ---
 
-<svg
-  class={`circuit-lines circuit-lines--${variant}`}
-  aria-hidden="true"
-  viewBox="0 0 800 600"
-  preserveAspectRatio="none"
->
-  <path class="circuit-line" d="M0 120 H240 L280 160 V320 H520 L560 360 V600" />
-  <path class="circuit-line circuit-line--delay1" d="M800 80 H540 L500 120 V260 H260 L220 300 V600" />
-  <path class="circuit-line circuit-line--delay2" d="M0 480 H160 L200 440 V220 H420 L460 180 V0" />
-  <circle class="circuit-node" cx="240" cy="120" r="4" />
-  <circle class="circuit-node" cx="520" cy="320" r="4" />
-  <circle class="circuit-node" cx="540" cy="80" r="4" />
-  <circle class="circuit-node" cx="260" cy="260" r="4" />
-  <circle class="circuit-node" cx="160" cy="480" r="4" />
-  <circle class="circuit-node" cx="420" cy="220" r="4" />
-</svg>
+<div class={`circuit-wrapper circuit-wrapper--${variant}`} aria-hidden="true">
+  <svg
+    class="circuit-lines"
+    viewBox="0 0 800 600"
+    preserveAspectRatio="none"
+  >
+    <path class="circuit-line" d="M0 120 H240 L280 160 V320 H520 L560 360 V600" />
+    <path class="circuit-line circuit-line--delay1" d="M800 80 H540 L500 120 V260 H260 L220 300 V600" />
+    <path class="circuit-line circuit-line--delay2" d="M0 480 H160 L200 440 V220 H420 L460 180 V0" />
+  </svg>
+  <div class="circuit-node" style="left: 30%; top: 20%;"></div>
+  <div class="circuit-node" style="left: 65%; top: 53.33%;"></div>
+  <div class="circuit-node circuit-node--alt" style="left: 67.5%; top: 13.33%;"></div>
+  <div class="circuit-node circuit-node--alt" style="left: 32.5%; top: 43.33%;"></div>
+  <div class="circuit-node" style="left: 20%; top: 80%;"></div>
+  <div class="circuit-node" style="left: 52.5%; top: 36.67%;"></div>
+</div>
 
 <style>
-  .circuit-lines {
+  .circuit-wrapper {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -31,6 +32,13 @@ const { variant = 'section' } = Astro.props;
     z-index: -1;
     pointer-events: none;
     opacity: 0.12;
+  }
+  
+  .circuit-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .circuit-line {
@@ -51,7 +59,20 @@ const { variant = 'section' } = Astro.props;
   }
 
   .circuit-node {
-    fill: var(--accent);
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px var(--accent);
+    animation: nodePulse 3s ease-in-out infinite alternate;
+  }
+
+  .circuit-node--alt {
+    background: var(--accent-2);
+    box-shadow: 0 0 8px var(--accent-2);
+    animation-delay: -1.5s;
   }
 
   @keyframes circuitFlow {
@@ -59,4 +80,16 @@ const { variant = 'section' } = Astro.props;
       stroke-dashoffset: -160;
     }
   }
+
+  @keyframes nodePulse {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 1;
+    }
+  }
 </style>
+
