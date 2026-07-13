@@ -1,39 +1,37 @@
 :root {
-  /* Áureo — dark luxe (tema principal) */
-  --bg: #100e0a;
-  --bg-elevated: #17140d;
-  --text: #ece2ce;
-  --text-muted: #a3977c;
-  --accent: #c8a24b;
-  --accent-2: #e3c77a;
-  --border: rgba(200, 162, 75, 0.25);
-  --glass-bg: rgba(255, 249, 235, 0.03);
-  --glass-border: rgba(200, 162, 75, 0.16);
-  --danger: #e0644d;
-  --success: #8bae6a;
+  /* Sawad — Dark Warm Minimal (Main theme) */
+  --bg: #151312;
+  --bg-elevated: #1d1b1a;
+  --text: #ffffff;
+  --text-muted: #998f8f;
+  --accent: #c5ff41;                 /* Sawad lime-green accent */
+  --accent-2: #f46c38;               /* Sawad orange secondary */
+  --border: rgba(197, 255, 65, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(197, 255, 65, 0.15);
+  --danger: #ff5d5d;
+  --success: #c5ff41;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Satoshi', 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 
   --container: 1140px;
-  --radius: 6px;
-  --transition: 200ms ease;
+  --radius: 12px;
+  --transition: 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root[data-theme='light'] {
-  /* Áureo — papel quente */
-  --bg: #f6f2e9;
-  --bg-elevated: #fffdf8;
-  --text: #221f18;
-  --text-muted: #6a6250;
-  --accent: #9a7420;
-  --accent-2: #b8912f;
-  --border: rgba(154, 116, 32, 0.28);
-  --glass-bg: rgba(40, 33, 15, 0.035);
-  --glass-border: rgba(154, 116, 32, 0.2);
-  --danger: #b23a25;
-  --success: #5f8a3f;
+  /* Sawad — Light Warm paper */
+  --bg: #faf7f3;
+  --bg-elevated: #ffffff;
+  --text: #151312;
+  --text-muted: #6a6b6e;
+  --accent: #8ebc1e;                  /* Darker lime green for readability */
+  --accent-2: #d35400;                /* Darker orange for light theme */
+  --border: rgba(142, 188, 30, 0.3);
+  --glass-bg: rgba(0, 0, 0, 0.02);
+  --glass-border: rgba(142, 188, 30, 0.22);
 }
 
 * {
@@ -193,7 +191,8 @@ h3 {
   width: 48px;
   height: 48px;
   opacity: 1 !important;
-  box-shadow: 0 0 16px var(--border);
+  border-color: var(--accent-2) !important;
+  box-shadow: 0 0 16px rgba(244, 108, 56, 0.4);
 }
 
 html.has-custom-cursor,
