@@ -21,7 +21,8 @@ export function initParticleNetwork(canvasId: string) {
 
   function getAccentColor(): string {
     const theme = document.documentElement.getAttribute('data-theme');
-    return theme === 'light' ? '10, 110, 133' : '0, 255, 178';
+    // Áureo: dourado — mais escuro no tema claro para manter legibilidade.
+    return theme === 'light' ? '154, 116, 32' : '200, 162, 75';
   }
 
   function resize() {

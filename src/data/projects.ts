@@ -12,48 +12,93 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'project-fallen',
-    title: 'Project Fallen',
-    thumbnail: '/assets/img/work1.png',
+    slug: 'feed-track',
+    title: 'Feed-track',
+    thumbnail: '/assets/img/covers/feed-track.svg',
     shortDescription:
-      'Jogo interativo desenvolvido em JavaScript puro, com lógica de gameplay, controle de personagens e sistema de pontuação.',
-    tech: ['JavaScript', 'HTML5', 'CSS3'],
-    repoUrl: 'https://github.com/BrunoSouzaFarias/project-fallen',
+      'Sistema profissional de feedback de colaboradores com IA integrada para apoiar a avaliação. Une gestão de pessoas e desenvolvimento.',
+    tech: ['TypeScript', 'IA', 'Full-Stack'],
+    repoUrl: 'https://github.com/BrunoSouzaFarias/Feed-track',
     problem:
-      'Construir um jogo funcional do zero, sem engines ou frameworks, para consolidar fundamentos de lógica de programação, manipulação de estado e DOM em tempo real.',
+      'Dar feedback estruturado e recorrente a uma equipe é trabalhoso e subjetivo — falta padronização, histórico e apoio na hora de avaliar de forma justa.',
     solution:
-      'Implementação de um game loop em JavaScript puro: controle de personagem via eventos de teclado, sistema de colisão, geração de obstáculos e contagem de pontuação persistida durante a sessão.',
+      'Plataforma que centraliza os ciclos de feedback entre líder e colaboradores, com IA integrada para apoiar a avaliação e tornar o processo mais consistente.',
     result:
-      'Jogo completo e jogável publicado no GitHub, usado como prova de domínio de lógica de programação e manipulação de DOM sem dependências externas.',
+      'Ferramenta que combina diretamente minha experiência de liderança de equipes com desenvolvimento full-stack e uso prático de IA aplicada à gestão de pessoas.',
   },
   {
-    slug: 'social-tree',
-    title: 'Social Tree',
-    thumbnail: '/assets/img/work2.jpg',
+    slug: 'pixelcrew',
+    title: 'PixelCrew',
+    thumbnail: '/assets/img/covers/pixelcrew.svg',
     shortDescription:
-      'Aplicação web para centralizar e compartilhar links de redes sociais, com design responsivo e interface amigável.',
+      'Escritório virtual retrô em pixel art dentro do VS Code para ver seus agentes de IA (Claude Code, Gemini) trabalhando em tempo real.',
+    tech: ['TypeScript', 'VS Code', 'WebSockets'],
+    repoUrl: 'https://github.com/BrunoSouzaFarias/PixelCrew',
+    problem:
+      'Acompanhar vários agentes de IA trabalhando é abstrato: não há uma forma visual e imediata de perceber o que cada um está fazendo em tempo real.',
+    solution:
+      'Extensão de VS Code que representa cada agente como um personagem pixel art em um escritório virtual, atualizado ao vivo via WebSockets — com suporte a Claude Code, Antigravity/Gemini e fontes customizadas.',
+    result:
+      'Projeto criativo e tecnicamente robusto que demonstra domínio de extensões de VS Code, comunicação em tempo real e integração com múltiplas ferramentas de IA.',
+  },
+  {
+    slug: 'dashboard-caps',
+    title: 'dashboardPy',
+    thumbnail: '/assets/img/covers/dashboard-caps.svg',
+    shortDescription:
+      'Dashboard em Python para acompanhamento dos chamados do CAPS, com visão consolidada de indicadores de atendimento.',
+    tech: ['Python', 'Dados', 'Dashboard'],
+    repoUrl: 'https://github.com/BrunoSouzaFarias/dashboardPy',
+    problem:
+      'Sem uma visão consolidada do volume e do status dos chamados do CAPS, fica difícil priorizar e tomar decisões baseadas em dados no dia a dia da operação.',
+    solution:
+      'Dashboard em Python que agrega e visualiza os indicadores dos chamados, transformando dados brutos em um painel claro de acompanhamento.',
+    result:
+      'Painel que apoia decisões data-driven na operação de suporte — nascido diretamente da minha rotina de supervisão de TI na saúde.',
+  },
+  {
+    slug: 'login-sghx',
+    title: 'login-cadastro',
+    thumbnail: '/assets/img/covers/login-sghx.svg',
+    shortDescription:
+      'Página de cadastro integrada a uma API em Python que gera automaticamente os campos de usuário no sistema hospitalar SGHX.',
+    tech: ['JavaScript', 'Python', 'API'],
+    repoUrl: 'https://github.com/BrunoSouzaFarias/login-cadastro',
+    problem:
+      'Criar e provisionar usuários manualmente no sistema hospitalar SGHX é repetitivo, lento e sujeito a erros de digitação.',
+    solution:
+      'Página de cadastro conectada a uma API em Python que gera automaticamente os campos necessários no SGHX, padronizando o provisionamento de acessos.',
+    result:
+      'Automação que reduz trabalho manual e erros no cadastro de usuários — impacto real e direto em um ambiente de saúde em produção.',
+  },
+  {
+    slug: 'barbearia-caninde',
+    title: 'Barbearia Canindé',
+    thumbnail: '/assets/img/covers/barbearia-caninde.svg',
+    shortDescription:
+      'Site institucional one-page, moderno e responsivo, com galeria lightbox, depoimentos e integração com WhatsApp. HTML, CSS e JS puros.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
-    repoUrl: 'https://github.com/BrunoSouzaFarias/social-tree',
+    repoUrl: 'https://github.com/BrunoSouzaFarias/Barbearia-Caninde',
     problem:
-      'Muitas pessoas têm presença em várias redes sociais e precisam de uma forma simples de compartilhar todos os links a partir de um único endereço — sem depender de serviços pagos de terceiros.',
+      'Um negócio local precisa de presença online que converta: carregue rápido, funcione bem no celular e leve o cliente ao contato sem fricção.',
     solution:
-      'Página estática responsiva, com layout configurável de links, construída para carregar rápido e funcionar bem em qualquer dispositivo, sem necessidade de backend.',
+      'Site one-page responsivo em HTML/CSS/JS puro (sem frameworks), com galeria em lightbox, depoimentos de clientes, menu hambúrguer mobile e botão direto de WhatsApp.',
     result:
-      'Aplicação leve e totalmente funcional, fácil de personalizar e hospedar gratuitamente como página estática.',
+      'Site institucional elegante (paleta dourado e preto), leve e pronto para captar clientes pelo celular — prova de entrega de front-end polido para cliente real.',
   },
   {
-    slug: 'banco-digital-oop',
-    title: 'Banco Digital OOP',
-    thumbnail: '/assets/img/work3.jpg',
+    slug: 'store-manager',
+    title: 'store-manager',
+    thumbnail: '/assets/img/covers/store-manager.svg',
     shortDescription:
-      'Aplicação de banco digital usando programação orientada a objetos: contas, transações e operações bancárias.',
-    tech: ['JavaScript', 'OOP', 'Node.js'],
-    repoUrl: 'https://github.com/BrunoSouzaFarias/lab-banco-digital-oo',
+      'API de gerenciamento de vendas completamente RESTful, com camadas bem definidas e operações CRUD sobre produtos e pedidos.',
+    tech: ['Node.js', 'Express', 'REST API'],
+    repoUrl: 'https://github.com/BrunoSouzaFarias/store-manager',
     problem:
-      'Modelar um domínio bancário simplificado (contas, saldos, transações) de forma orientada a objetos, aplicando encapsulamento e responsabilidade única entre as classes.',
+      'Gerenciar produtos e vendas exige uma API confiável, bem modelada e aderente às boas práticas REST para servir com segurança diferentes clientes.',
     solution:
-      'Classes para Conta, Cliente e Transação com validações de regras de negócio (saldo insuficiente, limites, histórico de operações), rodando em Node.js.',
+      'API RESTful em Node.js com arquitetura em camadas (model/service/controller), validações de entrada e operações CRUD completas sobre produtos e vendas.',
     result:
-      'Sistema funcional que demonstra aplicação prática de POO e separação de responsabilidades em um domínio com regras de negócio reais.',
+      'Back-end que demonstra domínio de arquitetura REST, Node.js e modelagem de dados — fundamentos sólidos de desenvolvimento de serviços.',
   },
 ];

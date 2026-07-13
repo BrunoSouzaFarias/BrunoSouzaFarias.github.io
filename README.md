@@ -1,6 +1,6 @@
 # Portfolio — Bruno de Souza Farias
 
-Portfolio pessoal de Bruno de Souza Farias, redesenhado com identidade visual própria ("Neon Circuit"): tema escuro com acentos neon verde/ciano, rede de partículas interativa no hero, e tema claro alternativo. Construído com [Astro](https://astro.build).
+Portfolio pessoal de Bruno de Souza Farias com identidade visual própria ("Áureo" — dark luxe): charcoal quente, tipografia serifada (Fraunces) e acentos em dourado, rede de partículas interativa no hero, e tema claro em papel quente. Construído com [Astro](https://astro.build).
 
 ## Visão geral
 
